@@ -70,46 +70,48 @@ function App() {
   };
 
   return (
-    <div className="app-container relative">
-      <Header currentMonth={currentMonth} />
+    <div className="w-full min-h-screen bg-[#F3F4F1] flex">
+      <div className="flex-1 max-w-[430px] mx-auto w-full md:w-[430px] bg-soft-white md:shadow-lg flex flex-col">
+        <Header currentMonth={currentMonth} />
 
-      <main className="px-5 pt-6 pb-24 min-h-screen">
-        {showDemoBanner && <DemoBanner onDismiss={handleDismissBanner} />}
+        <main className="px-5 pt-6 pb-24 flex-1 overflow-y-auto">
+          {showDemoBanner && <DemoBanner onDismiss={handleDismissBanner} />}
 
-        {(activeTab === 'dashboard' || activeTab === 'records') && (
-          <MonthNavigator
-            currentMonth={currentMonth}
-            onPrevMonth={handlePrevMonth}
-            onNextMonth={handleNextMonth}
-            disableNext={isCurrentMonth()}
-          />
+          {(activeTab === 'dashboard' || activeTab === 'records') && (
+            <MonthNavigator
+              currentMonth={currentMonth}
+              onPrevMonth={handlePrevMonth}
+              onNextMonth={handleNextMonth}
+              disableNext={isCurrentMonth()}
+            />
+          )}
+
+          {activeTab === 'dashboard' && (
+            <Dashboard entries={entries} currentMonth={currentMonth} />
+          )}
+
+          {activeTab === 'add' && (
+            <AddEntry onEntryAdded={refreshEntries} onShowToast={showToast} />
+          )}
+
+          {activeTab === 'records' && (
+            <Records
+              entries={entries}
+              currentMonth={currentMonth}
+              onEntryDeleted={refreshEntries}
+              onShowToast={showToast}
+            />
+          )}
+
+          {activeTab === 'tax' && <Tax entries={entries} onShowToast={showToast} />}
+        </main>
+
+        <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
+
+        {toastMessage && (
+          <Toast message={toastMessage} onClose={() => setToastMessage(null)} />
         )}
-
-        {activeTab === 'dashboard' && (
-          <Dashboard entries={entries} currentMonth={currentMonth} />
-        )}
-
-        {activeTab === 'add' && (
-          <AddEntry onEntryAdded={refreshEntries} onShowToast={showToast} />
-        )}
-
-        {activeTab === 'records' && (
-          <Records
-            entries={entries}
-            currentMonth={currentMonth}
-            onEntryDeleted={refreshEntries}
-            onShowToast={showToast}
-          />
-        )}
-
-        {activeTab === 'tax' && <Tax entries={entries} onShowToast={showToast} />}
-      </main>
-
-      <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
-
-      {toastMessage && (
-        <Toast message={toastMessage} onClose={() => setToastMessage(null)} />
-      )}
+      </div>
     </div>
   );
 }

@@ -6,8 +6,8 @@ interface HeaderProps {
 
 export function Header({ currentMonth }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-50 bg-navy px-5 py-4 shadow-md">
-      <div className="flex flex-col">
+    <header className="sticky top-0 z-50 w-full bg-navy px-5 py-4 shadow-md">
+      <div className="max-w-[430px] mx-auto md:mx-0 flex flex-col">
         <div className="flex items-baseline gap-1">
           <span className="font-syne text-2xl font-extrabold text-white">Naira</span>
           <span className="font-syne text-2xl font-extrabold text-gold">Track</span>
