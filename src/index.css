@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-[#F3F4F1];
+  }
+}
+
+@layer utilities {
+  .app-container {
+    @apply max-w-[430px] mx-auto bg-soft-white min-h-screen shadow-lg;
+  }
+}
