@@ -29,3 +29,13 @@
     animation: fade-in 0.3s ease-out;
   }
 }
+
+div[style*="Made in Bolt"] {
+  display: none !important;
+}
+
+a[href*="made-in-bolt"],
+a[href*="bolt.new"],
+div:has(> a[href*="Made in Bolt"]) {
+  display: none !important;
+}
