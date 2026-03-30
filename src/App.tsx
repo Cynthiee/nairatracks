@@ -70,11 +70,11 @@ function App() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#F3F4F1] flex flex-col">
+    <div className="w-full min-h-screen bg-[#F3F4F1] flex flex-col pb-[90px]">
       <div className="w-full bg-soft-white flex-1 flex flex-col">
         <Header currentMonth={currentMonth} />
 
-        <main className="w-full px-5 md:px-8 pt-6 pb-32 flex-1 overflow-y-auto max-w-[1200px] mx-auto">
+        <main className="w-full px-5 md:px-8 pt-6 pb-6 flex-1 overflow-y-auto max-w-[1200px] mx-auto">
           {showDemoBanner && <DemoBanner onDismiss={handleDismissBanner} />}
 
           {(activeTab === 'dashboard' || activeTab === 'records') && (
